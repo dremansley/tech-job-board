@@ -1,5 +1,4 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
   font-synthesis: none;
@@ -7,6 +6,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  margin: 0 auto;
+  width:100vw;
+  background:#f8f8f8;
 }
 
 a {
@@ -20,22 +25,58 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  padding:0;
   min-width: 320px;
   min-height: 100vh;
   width:100vw;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+
+
+.MuiTab-root{
+  color:grey !important;
 }
+.MuiTab-root.Mui-selected{
+  font-weight:600;
+  color: #218c74 !important
+}
+.MuiTab-root{
+  text-transform: capitalize !important;
+}
+button:focus, button:focus-visible{
+  outline:none !important;
+}
+
+.green-cell{
+  color: green;
+}
+.red-cell{
+  color:red;
+}
+.MuiTabs-indicator{
+  display: none
+}
+.MuiPaper-root::before{
+  display: none !important;
+}
+
+.menu-button {
+  padding: 8px 20px !important;
+  text-align: center;
+  font-weight: 600 !important;
+  color: #efefef !important;
+  background-color: transparent !important;
+  border: none;
+  border-radius: 8px !important;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left:10px !important;
+  text-transform: capitalize !important;
+}
+
+.menu-button:hover {
+  color:#FFFFFF !important;
+  font-weight:800 !important;
+  background-color: rgba(0,0,0,0.2) !important;
+}
+
