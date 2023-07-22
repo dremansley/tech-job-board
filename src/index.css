@@ -71,13 +71,13 @@ button:focus, button:focus-visible{
   border-radius: 8px !important;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-left:10px !important;
+  margin-left:5px !important;
   text-transform: capitalize !important;
 }
 
 .menu-button:hover {
-  color:#FFFFFF !important;
+  color:#222 !important;
   font-weight:800 !important;
-  background-color: rgba(0,0,0,0.2) !important;
+  background-color: rgba(0,0,0,0.05) !important;
 }
 
