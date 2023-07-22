@@ -14,6 +14,7 @@ import DataObjectIcon from '@mui/icons-material/DataObject';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import Typography from "@mui/joy/Typography"
 import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
+import {useNavigate} from "react-router-dom";
 
 interface HeaderProps {
     title: string;
@@ -27,13 +28,15 @@ const Header = (props: HeaderProps) => {
     ]
 
     const accountPages = [
-        { name: 'Login', icon: '' },
-        { name: 'Register', icon: '' }
+        { name: 'Login', icon: '', url: "/login"},
+        { name: 'Register', icon: '', url: "/register"}
     ]
     const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
+    const navigate = useNavigate();
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -145,7 +148,7 @@ const Header = (props: HeaderProps) => {
                         {accountPages.map((page) => (
                             <Button
                                 key={page.name}
-                                onClick={handleCloseNavMenu}
+                                onClick={()=>navigate(page.url)}
                                 sx={{ my: 1 }}
                                 className={"menu-button"}
                                 startIcon={page.icon}
