@@ -6,15 +6,14 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
 import Typography from "@mui/joy/Typography"
 import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
 import {useNavigate} from "react-router-dom";
+import JobSearchForm from "./JobSearchForm.tsx";
 
 interface HeaderProps {
     title: string;
@@ -23,8 +22,8 @@ interface HeaderProps {
 const Header = (props: HeaderProps) => {
 
     const pages = [
-        { name: 'Find Jobs', icon: <WorkOutlineOutlinedIcon/> },
-        { name: 'Saved', icon: <BookmarksOutlinedIcon/> }
+        { name: 'Find Jobs', icon: <WorkOutlineOutlinedIcon/>, url:"/" },
+        { name: 'Saved', icon: <BookmarksOutlinedIcon/>, url: "/saved"}
     ]
 
     const accountPages = [
@@ -57,18 +56,18 @@ const Header = (props: HeaderProps) => {
         <AppBar position="static" elevation={0} sx={{background:"#FFFFFF"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <DataObjectIcon sx={{ display: { xs: 'none', md: 'flex', color:"#814dde" }, mr: 1 }} />
+                    <DataObjectIcon sx={{ display: { xs: 'none', md: 'flex', color:"#2f3542" }, mr: 1 }} />
                     <Typography
                         level="h6"
                         noWrap
                         component="a"
                         href="/"
-                        color={"info"}
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
                             fontWeight: 700,
                             textDecoration: 'none',
+                            color:"#2f3542"
                         }}
                     >
                         {props.title}
@@ -114,34 +113,34 @@ const Header = (props: HeaderProps) => {
                     <Typography
                         level="h5"
                         noWrap
-                        component="a"
-                        href=""
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: '#814dde',
+                            color: '#2f3542',
                             textDecoration: 'none',
                         }}
                     >
                         {props.title}
                     </Typography>
-                    <Box sx={{ flexGrow: 1, ml:10, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page.name}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 1 }}
-                                className={"menu-button"}
-                                startIcon={page.icon}
-                            >
 
-                                {page.name}
-                            </Button>
-                        ))}
-                    </Box>
+                    <JobSearchForm/>
+                    {/*<Box sx={{ flexGrow: 1, ml:10, display: { xs: 'none', md: 'flex' } }}>*/}
+                    {/*    {pages.map((page) => (*/}
+                    {/*        <Button*/}
+                    {/*            key={page.name}*/}
+                    {/*            onClick={()=> navigate(page.url)}*/}
+                    {/*            sx={{ my: 1 }}*/}
+                    {/*            className={"menu-button"}*/}
+                    {/*            startIcon={page.icon}*/}
+                    {/*        >*/}
+
+                    {/*            {page.name}*/}
+                    {/*        </Button>*/}
+                    {/*    ))}*/}
+                    {/*</Box>*/}
 
                     <Box sx={{ flexGrow: 0 }}>
 
