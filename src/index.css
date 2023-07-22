@@ -11,7 +11,8 @@
 #root {
   margin: 0 auto;
   width:100vw;
-  background:#f8f8f8;
+  height:100vh;
+  background:#fbfcfd;
 }
 
 a {
@@ -64,7 +65,7 @@ button:focus, button:focus-visible{
   padding: 8px 20px !important;
   text-align: center;
   font-weight: 600 !important;
-  color: #efefef !important;
+  color: grey !important;
   background-color: transparent !important;
   border: none;
   border-radius: 8px !important;

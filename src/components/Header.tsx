@@ -3,7 +3,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
+
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import Typography from "@mui/joy/Typography"
 
 interface HeaderProps {
     title: string;
@@ -42,20 +43,20 @@ const Header = (props: HeaderProps) => {
     };
 
     return (
-        <AppBar position="static" elevation={0} sx={{background:"#222f3e"}}>
+        <AppBar position="static" elevation={0} sx={{background:"#FFFFFF"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <DataObjectIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+                    <DataObjectIcon sx={{ display: { xs: 'none', md: 'flex', color:"#814dde" }, mr: 1 }} />
                     <Typography
-                        variant="h6"
+                        level="h6"
                         noWrap
                         component="a"
                         href="/"
+                        color={"info"}
                         sx={{
                             mr: 2,
                             display: { xs: 'none', md: 'flex' },
                             fontWeight: 700,
-                            color: 'inherit',
                             textDecoration: 'none',
                         }}
                     >
@@ -69,7 +70,7 @@ const Header = (props: HeaderProps) => {
                             aria-controls="menu-appbar"
                             aria-haspopup="true"
                             onClick={handleOpenNavMenu}
-                            color="inherit"
+                            color="default"
                         >
                             <MenuIcon />
                         </IconButton>
@@ -100,7 +101,7 @@ const Header = (props: HeaderProps) => {
                     </Box>
                     <WorkOutlineOutlinedIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
-                        variant="h5"
+                        level="h5"
                         noWrap
                         component="a"
                         href=""
@@ -108,14 +109,13 @@ const Header = (props: HeaderProps) => {
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
                             flexGrow: 1,
-                            fontFamily: 'monospace',
                             fontWeight: 700,
                             letterSpacing: '.3rem',
-                            color: 'inherit',
+                            color: '#814dde',
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        {props.title}
                     </Typography>
                     <Box sx={{ flexGrow: 1, ml:10, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
