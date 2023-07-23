@@ -3,7 +3,7 @@ import Input from '@mui/joy/Input';
 import Button from '@mui/joy/Button';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
-import {Divider} from "@mui/joy";
+import {Divider, Select, Option} from "@mui/joy";
 
 const JobSearchForm = () => {
     return (
@@ -12,12 +12,12 @@ const JobSearchForm = () => {
                 display: 'flex',
                 flexDirection: 'row',
                 flexGrow: 1,
-                padding: 0,
-                margin: 2,
+                padding: 0.5,
+                margin: 0,
                 borderRadius: 2,
-                backgroundColor: '#f8f8f8',
+                backgroundColor: '#FFFFFF',
                 alignItems: 'center',
-                border:'1px solid #ddd',
+                border:'1px solid #eee',
             }}
         >
             {/* Job Title or Tags Search */}
@@ -56,19 +56,26 @@ const JobSearchForm = () => {
                 }}
             />
 
+            <Select value={0}>
+                <Option value={0}>Select Distance Within</Option>
+                <Option value={1}>1 Mile</Option>
+                <Option value={5}>5 Miles</Option>
+                <Option value={10}>10 Miles</Option>
+                <Option value={15}>15 Miles</Option>
+            </Select>
+
             {/* Search Button */}
             <Button
                 variant="solid"
                 size="sm"
                 startDecorator={<SearchOutlinedIcon />}
+                color={"primary"}
                 sx={{
-                    padding:"12px",
-                    borderRadius: '0 2px 2px 0',
+                    borderRadius:8,
                     fontWeight:600,
                     height:"100%",
-                    backgroundColor:"#2f3542",
-                    borderTopRightRadius:8,
-                    borderBottomRightRadius:8
+                    // backgroundColor:"#2f3542",
+                    ml:1, mr:1, p:1, pr:2
                 }}
             >
                 Search Jobs

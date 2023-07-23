@@ -14,9 +14,14 @@ import Typography from "@mui/joy/Typography"
 import BookmarksOutlinedIcon from '@mui/icons-material/BookmarksOutlined';
 import {useNavigate} from "react-router-dom";
 import JobSearchForm from "./JobSearchForm.tsx";
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
+import {Avatar, Tooltip} from "@mui/joy";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
+import {ActivePageInterface} from "../Interfaces/ActivePageInterface.tsx";
+import {cloneElement} from "react";
 
 interface HeaderProps {
-    title: string;
+    activePage: ActivePageInterface;
 }
 
 const Header = (props: HeaderProps) => {
@@ -56,7 +61,12 @@ const Header = (props: HeaderProps) => {
         <AppBar position="static" elevation={0} sx={{background:"#FFFFFF"}}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    <DataObjectIcon sx={{ display: { xs: 'none', md: 'flex', color:"#2f3542" }, mr: 1 }} />
+                    {cloneElement(props.activePage.icon, {
+                        sx: {
+                            display: { xs: 'none', md: 'flex', color: '#2f3542' },
+                            mr: 1,
+                        },
+                    })}
                     <Typography
                         level="h6"
                         noWrap
@@ -70,7 +80,7 @@ const Header = (props: HeaderProps) => {
                             color:"#2f3542"
                         }}
                     >
-                        {props.title}
+                        {props.activePage.title}
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -126,7 +136,8 @@ const Header = (props: HeaderProps) => {
                         {props.title}
                     </Typography>
 
-                    <JobSearchForm/>
+
+
                     {/*<Box sx={{ flexGrow: 1, ml:10, display: { xs: 'none', md: 'flex' } }}>*/}
                     {/*    {pages.map((page) => (*/}
                     {/*        <Button*/}
@@ -142,8 +153,11 @@ const Header = (props: HeaderProps) => {
                     {/*    ))}*/}
                     {/*</Box>*/}
 
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box sx={{ flexGrow: 1 }} />
 
+
+                    {/* Account Pages buttons will now be positioned at the right */}
+                    <Box sx={{ display: "flex", justifyContent: "flex-end", gap:1 }}>
                         {accountPages.map((page) => (
                             <Button
                                 key={page.name}
@@ -157,34 +171,35 @@ const Header = (props: HeaderProps) => {
                             </Button>
                         ))}
 
-                        {/*<Tooltip title="Open settings">*/}
-                        {/*    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>*/}
-                        {/*        <Avatar alt="Andre" src="/" />*/}
-                        {/*    </IconButton>*/}
-                        {/*</Tooltip>*/}
-                        {/*<Menu*/}
-                        {/*    sx={{ mt: '45px' }}*/}
-                        {/*    id="menu-appbar"*/}
-                        {/*    anchorEl={anchorElUser}*/}
-                        {/*    anchorOrigin={{*/}
-                        {/*        vertical: 'top',*/}
-                        {/*        horizontal: 'right',*/}
-                        {/*    }}*/}
-                        {/*    keepMounted*/}
-                        {/*    transformOrigin={{*/}
-                        {/*        vertical: 'top',*/}
-                        {/*        horizontal: 'right',*/}
-                        {/*    }}*/}
-                        {/*    open={Boolean(anchorElUser)}*/}
-                        {/*    onClose={handleCloseUserMenu}*/}
-                        {/*>*/}
-                        {/*    {settings.map((setting) => (*/}
-                        {/*        <MenuItem key={setting} onClick={handleCloseUserMenu}>*/}
-                        {/*            <Typography textAlign="center">{setting}</Typography>*/}
-                        {/*        </MenuItem>*/}
-                        {/*    ))}*/}
-                        {/*</Menu>*/}
+                        <Tooltip title="Open settings">
+                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <Avatar alt="Andre" src="/" />
+                            </IconButton>
+                        </Tooltip>
+                        <Menu
+                            sx={{ mt: '45px' }}
+                            id="menu-appbar"
+                            anchorEl={anchorElUser}
+                            anchorOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            keepMounted
+                            transformOrigin={{
+                                vertical: 'top',
+                                horizontal: 'right',
+                            }}
+                            open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                        >
+                            {settings.map((setting) => (
+                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                    <Typography textAlign="center">{setting}</Typography>
+                                </MenuItem>
+                            ))}
+                        </Menu>
                     </Box>
+
                 </Toolbar>
             </Container>
         </AppBar>
